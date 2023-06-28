@@ -39,7 +39,8 @@ const Chatbot = () => {
             }, 500); // Delay of 0.5 seconds
         } else {
             setTimeout(() => {
-                setChat((prev) => [...prev, { text: response.data.data, user: "Chatbot" }]);
+                setChat((prev) => [...prev, { text: JSON.stringify(response.data.data), user: "Chatbot" }]);
+                setChat((prev) => [...prev, { text: response.data.message, user: "Chatbot" }]);
                 startChat();
             }, 500); // Delay of 0.5 seconds
         }

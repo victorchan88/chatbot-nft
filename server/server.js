@@ -23,16 +23,20 @@ app.post('/chat', async (req, res) => {
     chatBotState.position++;
 
     if (chatBotState.position >= chatBotState.fields.length) {
+        // Here you could handle the minting process of the NFT
+        // ...
+
+        // Send the chatBotState.data before resetting
+        const responseData = chatBotState.data;
+
         // Reset state
         chatBotState.position = 0;
         chatBotState.data = {};
 
-        // Here you could handle the minting process of the NFT
-        // ...
-
-        res.json({ data: "Your NFT has been minted. You can create another one." });
+        res.json({ data: responseData, message: "Your NFT has been minted. You can create another one." });
         return;
     }
+
 
     let nextField = chatBotState.fields[chatBotState.position];
 
